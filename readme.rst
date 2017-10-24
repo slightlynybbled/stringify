@@ -14,7 +14,7 @@ Simply `pip install stringify` should do the trick.  You could also download thi
 Use Case
 ----------------
 
-Somewhere - probably within your module - you have a file that has static, non-code data.  You probably have a directory called 'images' or 'bin' that the python code references when building a GUI or executing a program... whatever.  This works great when using python directly - such as when you install the package via pip and call it from the command-line. This doesn't work so well when you try to bundle your package using [`pyinstaller`](http://www.pyinstaller.org/), which doesn't natively recognize your non-code dependencies.
+Somewhere - probably within your module - you have a file that has static, non-code data.  You probably have a directory called 'images' or 'bin' that the python code references when building a GUI or executing a program... whatever.  This works great when using python directly - such as when you install the package via pip and call it from the command-line. This doesn't work so well when you try to bundle your package using `pyinstaller <http://www.pyinstaller.org/>`_, which doesn't natively recognize your non-code dependencies.
 
 This library allows you to read those binary files into python code and include that data as python variables in your code base.
 
