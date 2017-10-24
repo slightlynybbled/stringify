@@ -93,7 +93,7 @@ Depending on your use case, you may have to experiment with method of unpacking 
 Lock it Down
 ====================
 
-To reduce the chances of messing this up later, you may wish to add this funcitonality to your workflow so that it is automatically completed as you are developing and distributing your package.  Simply include ``dir_to_py_file`` in your ``setup.py`` script for ``my_package`` just before the call to ``setup()``.::
+To reduce the chances of messing this up later, you may wish to add this funcitonality to your workflow so that it is automatically completed as you are developing and distributing your package.  Simply include ``stringify_py()`` in your ``setup.py`` script for ``my_package`` just before the call to ``setup()``.::
 
     from setuptools import setup
     from stringify import stringify_py
