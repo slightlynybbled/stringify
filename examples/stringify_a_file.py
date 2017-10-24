@@ -1,5 +1,6 @@
 import logging
-from stringify import stringify, stringify_py
+from stringify import stringify, stringify_py, unstringify
+
 
 logging.basicConfig(level=logging.DEBUG)
 
@@ -14,4 +15,16 @@ stringify_py('binary_files/yellow-dot.png', destination_file='images.py')
 # 'my_directory.py' which contains string representations
 # of 'yellow-dot.png' and 'green-dot.png' which accessible
 # as variables 'yellow_dot' and 'green_dot'
-stringify_py('binary_files', destination_file='my_directory.py')
+stringify_py('binary_files', destination_file='my_img_directory.py')
+
+stringify_py('text_files', destination_file='my_text_directory.py')
+
+# going the other direction
+from my_text_files import text0, text1
+
+
+print(unstringify(text0))
+print(unstringify(text1))
+
+
+
