@@ -17,6 +17,10 @@ def stringify_py(source_path, destination_file='binary.py', overwrite=True):
         _bin_to_py_file(source_path, destination_file, overwrite)
 
 
+def unstringify(data):
+    return base64.b64decode(data)
+
+
 def stringify(binary_file_path):
     """
     convert a binary file into a base64 string
