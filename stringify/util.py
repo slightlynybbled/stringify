@@ -7,6 +7,16 @@ logger = logging.getLogger(__name__)
 logger.setLevel(logging.DEBUG)
 
 
+def stringify_py(source_path, destination_file='binary.py', overwrite=True):
+    if os.path.splitext(destination_file)[1] != '.py':
+        raise ValueError('The specified destination is not a python file')
+
+    if os.path.isdir(source_path):
+        _dir_to_py_file(source_path, destination_file, overwrite)
+    elif os.path.isfile(source_path):
+        _bin_to_py_file(source_path, destination_file, overwrite)
+
+
 def stringify(binary_file_path):
     """
     convert a binary file into a base64 string
@@ -36,8 +46,8 @@ def _file_name_to_var(source_file_path):
     return var_name
 
 
-def bin_to_py_file(source_file_path, destination_file='binary.py',
-                   overwrite=True):
+def _bin_to_py_file(source_file_path, destination_file='binary.py',
+                    overwrite=True):
     """
     creates a single file containing a single python variable
 
@@ -72,7 +82,7 @@ def bin_to_py_file(source_file_path, destination_file='binary.py',
         f.write(py_file)
 
 
-def dir_to_py_file(source_path, destination_file='binary.py', overwrite=True):
+def _dir_to_py_file(source_path, destination_file='binary.py', overwrite=True):
     """
     creates a single python file containing multiple
     variables representing binary files found in the 'directory_path'
