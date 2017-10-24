@@ -27,29 +27,38 @@ def _file_name_to_var(source_file_path):
     :param source_file_path: the full path, including extension
     :return: a valid python variable name
     """
-    var_name = os.path.basename(source_file_path).split('.')[0]  # remove the extension
+    # remove the extension
+    var_name = os.path.basename(source_file_path).split('.')[0]
+
     var_name = var_name.replace('-', '_')  # replace dashes with underscores
     var_name = var_name.replace(' ', '_')  # replace dashes with underscores
 
     return var_name
 
 
-def bin_to_py_file(source_file_path, destination_file='binary.py', overwrite=True):
+def bin_to_py_file(source_file_path, destination_file='binary.py',
+                   overwrite=True):
     """
     creates a single file containing a single python variable
 
     :param source_file_path: path to a binary file
-    :param destination_file: the path to which to save the new variable, including the '.py' extension
+    :param destination_file: the path to which to save the new variable,
+    including the '.py' extension
     :param overwrite: True or False
     :return: None
     """
-    logger.debug('attempting to save {} to {}'.format(source_file_path, destination_file))
+    logger.debug('attempting to save {} to {}'.format(source_file_path,
+                                                      destination_file))
 
     if os.path.exists(destination_file) and not overwrite:
-        raise ValueError('the file {} already exists and the overwrite flag is False'.format(destination_file))
+        raise ValueError(
+            'the file {} already exists and '
+            'the overwrite flag is False'.format(destination_file))
 
     if os.path.splitext(destination_file)[1] != '.py':
-        raise ValueError('the destination file must be a python type (extension must be ".py")')
+        raise ValueError(
+            'the destination file must be a '
+            'python type (extension must be ".py")')
 
     if not os.path.isfile(source_file_path):
         raise ValueError('the file specified is not a file or does not exist')
@@ -65,21 +74,28 @@ def bin_to_py_file(source_file_path, destination_file='binary.py', overwrite=Tru
 
 def dir_to_py_file(source_path, destination_file='binary.py', overwrite=True):
     """
-    creates a single python file containing multiple variables representing binary files found
-    in the 'directory_path'
+    creates a single python file containing multiple
+    variables representing binary files found in the 'directory_path'
 
     :param source_path: path to a directory
-    :param destination_file: the path to which to save the new variables, including the '.py' extension
+    :param destination_file: the path to which to save the new variables,
+    including the '.py' extension
     :param overwrite: True or False
     :return: None
     """
-    logger.debug('attempting to save all files from {} to {}'.format(source_path, destination_file))
+    logger.debug(
+        'attempting to save all '
+        'files from {} to {}'.format(source_path, destination_file))
 
     if os.path.exists(destination_file) and not overwrite:
-        raise ValueError('the file {} already exists and the overwrite flag is False'.format(destination_file))
+        raise ValueError(
+            'the file {} already exists and '
+            'the overwrite flag is False'.format(destination_file))
 
     if os.path.splitext(destination_file)[1] != '.py':
-        raise ValueError('the destination file must be a python type (extension must be ".py")')
+        raise ValueError(
+            'the destination file must be '
+            'a python type (extension must be ".py")')
 
     if not os.path.isdir(source_path):
         raise ValueError('the path specified is not a directory')

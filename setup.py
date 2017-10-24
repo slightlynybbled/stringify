@@ -3,6 +3,7 @@
 from setuptools import setup, find_packages
 import os
 
+__version__ = None
 
 # provide correct path for version
 here = os.path.dirname(os.path.dirname(__file__))
@@ -16,7 +17,8 @@ requirements = []
 setup(
     name='stringify',
     version=__version__,
-    description='Automatic string encoding of binary files into python variables',
+    description='Automatic string encoding of'
+                'binary files into python variables',
     long_description=readme,
     author='Jason R. Jones',
     author_email='slightlynybbled@gmail.com',
@@ -35,4 +37,3 @@ setup(
     ],
     keywords='string base64 binary'
 )
-
