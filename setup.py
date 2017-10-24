@@ -9,9 +9,12 @@ __version__ = None
 here = os.path.dirname(os.path.dirname(__file__))
 exec(open(os.path.join(here, 'stringify/version.py')).read())
 
+# uses the readme.rst as the long description
 with open('readme.rst') as f:
     readme = f.read()
 
+# requirements list is pretty short, so there is little
+# need for a requirements.txt at the moment
 requirements = []
 
 setup(
@@ -26,6 +29,7 @@ setup(
     packages=find_packages(),
     include_package_data=False,
     install_requires=requirements,
+    setup_requires=['flake8'],
     zip_safe=False,
     license='MIT',
     classifiers=[
