@@ -50,14 +50,14 @@ Move your binary files outside of the package that you wish to include them with
         package_file_0.py
 
 ==================================
-Run ``dir_to_py_file()`` Utility
+Run ``stringify_py()`` Utility
 ==================================
 
 Our files are now located within `images` and our desired location will be ``images.py`` within the package.::
 
-    from stringify import dir_to_py_file
+    from stringify import stringify_py
 
-    dir_to_py_file(source_path='images', destination_file='my_package/images.py')
+    stringify_py(source_path='images', destination_file='my_package/images.py')
 
 Note that dashes will be replaced with underscores and spaces will be replaced with underscores and that the extensions will be removed before the name of the python variable is created.  For instance, ``green-dot one.png`` will become the variable ``green_dot_one``.
 
@@ -96,14 +96,14 @@ Lock it Down
 To reduce the chances of messing this up later, you may wish to add this funcitonality to your workflow so that it is automatically completed as you are developing and distributing your package.  Simply include ``dir_to_py_file`` in your ``setup.py`` script for ``my_package`` just before the call to ``setup()``.::
 
     from setuptools import setup
-    from stringify import dir_to_py_file
+    from stringify import stringify_py
 
-    dir_to_py_file(source_path='images', destination_file='my_package/images.py')
+    stringify_py(source_path='images', destination_file='my_package/images.py')
 
     setup(
         name='my_package',
         version=__version__,
-        setup_requires=['stringify']
+        setup_requires=['stringify', 'flake8']
         ...
 
 As shown, you may also wish to add ``stringify`` to your ``setup_requires``, but you will get an error on import if ``stringify`` isn't installed, so it won't mess up your packaging to skip this line.
