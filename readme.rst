@@ -114,7 +114,7 @@ Run your PyInstaller Script
 
 Now that your files are simply bundled into your application, there should be nothing special about your package that requires ``MANIFEST.in`` or interferes with ``pyinstaller``.
 
-Simply `pyinstaller my_package/package_file_0.py` (assuming that is where your entry point is), and you are ready to rock!
+Simply ``pyinstaller my_package/package_file_0.py`` (assuming that is where your entry point is), and you are ready to rock!
 
 =======================
 Drink
