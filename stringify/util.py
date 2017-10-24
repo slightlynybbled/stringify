@@ -66,7 +66,7 @@ def bin_to_py_file(source_file_path, destination_file='binary.py',
     var_name = _file_name_to_var(source_file_path)
     var_data = stringify(source_file_path)
 
-    py_file = '{} = {}\n'.format(var_name, var_data)
+    py_file = '# flake8: noqa\n{} = {}\n'.format(var_name, var_data)
 
     with open(destination_file, 'w') as f:
         f.write(py_file)
@@ -100,7 +100,7 @@ def dir_to_py_file(source_path, destination_file='binary.py', overwrite=True):
     if not os.path.isdir(source_path):
         raise ValueError('the path specified is not a directory')
 
-    py_file = ''
+    py_file = '# flake8: noqa\n'
 
     for root, _, files in os.walk(source_path):
         for name in files:
