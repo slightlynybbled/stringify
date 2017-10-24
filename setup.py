@@ -8,12 +8,16 @@ import os
 here = os.path.dirname(os.path.dirname(__file__))
 exec(open(os.path.join(here, 'stringify/version.py')).read())
 
+with open('readme.rst') as f:
+    readme = f.read()
+
 requirements = []
 
 setup(
     name='stringify',
     version=__version__,
     description='Automatic string encoding of binary files into python variables',
+    long_description=readme,
     author='Jason R. Jones',
     author_email='slightlynybbled@gmail.com',
     url='https://github.com/slightlynybbled/stringify',
